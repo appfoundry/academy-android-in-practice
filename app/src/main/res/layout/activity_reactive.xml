@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landscape_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.appfoundry.pxldemo.LandscapeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/reactive_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Do something"/>
+
+        <TextView
+            android:id="@+id/reactive_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

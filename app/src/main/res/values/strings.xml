@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PXLDemo</string>
+    <string name="sample_title">Lorem Ipsum</string>
+    <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue tincidunt eros, in lobortis elit faucibus non. Fusce placerat sit amet eros id posuere. Vivamus odio nulla, feugiat a egestas sed, semper et dui. Ut condimentum neque mi, sed eleifend dui sollicitudin tempus. Nulla semper pretium nibh, id tristique ex lobortis id. Sed pellentesque mauris nulla, eget ornare ipsum dapibus at. Fusce dapibus rutrum posuere. Etiam tempor viverra neque. Proin pellentesque ipsum ut dictum interdum. Sed sodales venenatis ex, in convallis dolor placerat vitae. Etiam vitae efficitur nunc. Aenean dictum auctor ante, eget auctor dolor condimentum et. Suspendisse dapibus mauris quam, nec pretium lectus egestas id. Aenean nec leo sed dolor tempus feugiat.</string>
+</resources>

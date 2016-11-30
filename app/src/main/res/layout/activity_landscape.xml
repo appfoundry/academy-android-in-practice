@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landscape_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.appfoundry.pxldemo.LandscapeActivity">
+
+    <LinearLayout
+        android:id="@+id/landscape_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/landscape_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/landscape"/>
+
+        <TextView
+            android:id="@+id/landscape_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/sample_title"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <Button
+            android:id="@+id/landscape_do_something"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Do Something"/>
+
+        <TextView
+            android:id="@+id/landscape_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/sample_text"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+
+    </LinearLayout>
+
+</ScrollView>
