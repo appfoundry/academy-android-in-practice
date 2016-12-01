@@ -39,7 +39,7 @@ public class LandscapePicassoActivity extends AppCompatActivity {
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
         Picasso.with(getApplicationContext())
-                .load("http://media1.santabanta.com/full1/Outdoors/Landscapes/landscapes-284.jpg")
+                .load("http://media1.santabanta.com/full1/Outdoors/Landscapes/landscapes-284a.jpg")
                 .rotate(180)
                 .transform(new GrayscaleTransformation())
                 .transform(new SketchFilterTransformation(getBaseContext()))
