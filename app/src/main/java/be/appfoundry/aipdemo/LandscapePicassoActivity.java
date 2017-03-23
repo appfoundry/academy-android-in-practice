@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,20 +8,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import javax.inject.Inject;
+import com.squareup.picasso.Picasso;
 
-import be.appfoundry.pxldemo.database.Post;
-import be.appfoundry.pxldemo.service.PostService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class LandscapeRetrofitActivity extends AppCompatActivity {
+public class LandscapePicassoActivity extends AppCompatActivity {
 
     @BindView(R.id.landscape_scroll) ScrollView landscapeScrollWrapper;
     @BindView(R.id.landscape_container) LinearLayout landscapeContainer;
@@ -30,8 +24,6 @@ public class LandscapeRetrofitActivity extends AppCompatActivity {
     @BindView(R.id.landscape_do_something) Button landscapeDoSomething;
     @BindView(R.id.landscape_info) TextView landscapeInfo;
 
-    @Inject PostService postService;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,25 +31,17 @@ public class LandscapeRetrofitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landscape);
 
         ButterKnife.bind(this);
-
-        PXLDemoApplication.getAppComponent().inject(this);
     }
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        postService.getPost(2).enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                Post post = response.body();
-                landscapeTitle.setText(post.getTitle());
-                landscapeInfo.setText(post.getBody());
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(LandscapeRetrofitActivity.this, "Failed to get a post.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Picasso.with(getApplicationContext())
+                .load("http://media1.santabanta.com/full1/Outdoors/Landscapes/landscapes-284.jpg")
+                //.rotate(180)
+                //.transform(new GrayscaleTransformation())
+                //.transform(new SketchFilterTransformation(getBaseContext()))
+                //.error(R.drawable.error)
+                .into(landscapeImage);
     }
 
 }

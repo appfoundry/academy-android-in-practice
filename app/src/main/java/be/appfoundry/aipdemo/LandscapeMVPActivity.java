@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +10,15 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
+import be.appfoundry.aipdemo.database.Post;
+import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenter;
+import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenterRetrofitImpl;
+import be.appfoundry.aipdemo.mvp.LandscapeMVPView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.picasso.transformations.GrayscaleTransformation;
-import jp.wasabeef.picasso.transformations.gpu.SketchFilterTransformation;
 
-public class LandscapePicassoActivity extends AppCompatActivity {
+public class LandscapeMVPActivity extends AppCompatActivity implements LandscapeMVPView {
 
     @BindView(R.id.landscape_scroll) ScrollView landscapeScrollWrapper;
     @BindView(R.id.landscape_container) LinearLayout landscapeContainer;
@@ -27,6 +27,8 @@ public class LandscapePicassoActivity extends AppCompatActivity {
     @BindView(R.id.landscape_do_something) Button landscapeDoSomething;
     @BindView(R.id.landscape_info) TextView landscapeInfo;
 
+    private LandscapeMVPPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +36,27 @@ public class LandscapePicassoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landscape);
 
         ButterKnife.bind(this);
+
+        AIPDemoApplication.getAppComponent().inject(this);
+
+        //presenter = new LandscapeMVPPresenterDBFlowImpl();
+        presenter = new LandscapeMVPPresenterRetrofitImpl();
+        presenter.attachView(this);
     }
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        Picasso.with(getApplicationContext())
-                .load("http://media1.santabanta.com/full1/Outdoors/Landscapes/landscapes-284a.jpg")
-                .rotate(180)
-                .transform(new GrayscaleTransformation())
-                .transform(new SketchFilterTransformation(getBaseContext()))
-                .error(R.drawable.error)
-                .into(landscapeImage);
+        presenter.loadData();
     }
 
+    @Override
+    public void showPost(Post post) {
+        landscapeTitle.setText(post.getTitle());
+        landscapeInfo.setText(post.getBody());
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast.makeText(LandscapeMVPActivity.this, error, Toast.LENGTH_SHORT).show();
+    }
 }

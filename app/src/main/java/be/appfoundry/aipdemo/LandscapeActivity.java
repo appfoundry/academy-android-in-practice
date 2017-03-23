@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

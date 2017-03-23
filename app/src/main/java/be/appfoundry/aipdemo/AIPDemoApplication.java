@@ -1,14 +1,14 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.app.Application;
 
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
-import be.appfoundry.pxldemo.injection.AppComponent;
-import be.appfoundry.pxldemo.injection.DaggerAppComponent;
+import be.appfoundry.aipdemo.injection.AppComponent;
+import be.appfoundry.aipdemo.injection.DaggerAppComponent;
 
-public class PXLDemoApplication extends Application {
+public class AIPDemoApplication extends Application {
 
     private static AppComponent appComponent;
 

@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo.model;
+package be.appfoundry.aipdemo.model;
 
 public class User {
 

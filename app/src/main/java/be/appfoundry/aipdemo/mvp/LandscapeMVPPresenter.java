@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo.mvp;
+package be.appfoundry.aipdemo.mvp;
 
 public interface LandscapeMVPPresenter {
 

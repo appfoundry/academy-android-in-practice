@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo.mvp;
+package be.appfoundry.aipdemo.mvp;
 
 import android.support.annotation.NonNull;
 
@@ -6,22 +6,16 @@ import com.raizlabs.android.dbflow.sql.language.CursorResult;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
-import javax.inject.Inject;
-
-import be.appfoundry.pxldemo.PXLDemoApplication;
-import be.appfoundry.pxldemo.database.Post;
-import be.appfoundry.pxldemo.database.Post_Table;
-import be.appfoundry.pxldemo.service.PostService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import be.appfoundry.aipdemo.AIPDemoApplication;
+import be.appfoundry.aipdemo.database.Post;
+import be.appfoundry.aipdemo.database.Post_Table;
 
 public class LandscapeMVPPresenterDBFlowImpl implements LandscapeMVPPresenter {
 
     private LandscapeMVPView view;
 
     public LandscapeMVPPresenterDBFlowImpl() {
-        PXLDemoApplication.getAppComponent().inject(this);
+        AIPDemoApplication.getAppComponent().inject(this);
     }
 
     @Override

@@ -1,10 +1,10 @@
-package be.appfoundry.pxldemo.mvp;
+package be.appfoundry.aipdemo.mvp;
 
 import javax.inject.Inject;
 
-import be.appfoundry.pxldemo.PXLDemoApplication;
-import be.appfoundry.pxldemo.database.Post;
-import be.appfoundry.pxldemo.service.PostService;
+import be.appfoundry.aipdemo.AIPDemoApplication;
+import be.appfoundry.aipdemo.database.Post;
+import be.appfoundry.aipdemo.service.PostService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,7 +16,7 @@ public class LandscapeMVPPresenterRetrofitImpl implements LandscapeMVPPresenter 
     private LandscapeMVPView view;
 
     public LandscapeMVPPresenterRetrofitImpl() {
-        PXLDemoApplication.getAppComponent().inject(this);
+        AIPDemoApplication.getAppComponent().inject(this);
     }
 
     @Override

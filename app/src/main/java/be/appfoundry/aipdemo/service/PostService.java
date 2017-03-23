@@ -1,8 +1,8 @@
-package be.appfoundry.pxldemo.service;
+package be.appfoundry.aipdemo.service;
 
 import java.util.List;
 
-import be.appfoundry.pxldemo.database.Post;
+import be.appfoundry.aipdemo.database.Post;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

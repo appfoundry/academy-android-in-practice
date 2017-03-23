@@ -1,14 +1,9 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -17,17 +12,14 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import be.appfoundry.pxldemo.database.Post;
-import be.appfoundry.pxldemo.injection.AppComponent;
-import be.appfoundry.pxldemo.service.PostService;
+import be.appfoundry.aipdemo.database.Post;
+import be.appfoundry.aipdemo.service.PostService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
-import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 public class ReactiveActivity extends AppCompatActivity {
@@ -47,7 +39,7 @@ public class ReactiveActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        PXLDemoApplication.getAppComponent().inject(this);
+        AIPDemoApplication.getAppComponent().inject(this);
 
         simpleRxJava();
         //simpleRxJavaWithOperators();

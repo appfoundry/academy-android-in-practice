@@ -1,8 +1,8 @@
-package be.appfoundry.pxldemo.injection;
+package be.appfoundry.aipdemo.injection;
 
 import javax.inject.Singleton;
 
-import be.appfoundry.pxldemo.service.PostService;
+import be.appfoundry.aipdemo.service.PostService;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;

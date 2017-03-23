@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,9 +18,9 @@ import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransacti
 
 import javax.inject.Inject;
 
-import be.appfoundry.pxldemo.database.Post;
-import be.appfoundry.pxldemo.database.Post_Table;
-import be.appfoundry.pxldemo.service.PostService;
+import be.appfoundry.aipdemo.database.Post;
+import be.appfoundry.aipdemo.database.Post_Table;
+import be.appfoundry.aipdemo.service.PostService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -47,7 +47,7 @@ public class LandscapeDBFlowActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        PXLDemoApplication.getAppComponent().inject(this);
+        AIPDemoApplication.getAppComponent().inject(this);
     }
 
     @OnClick(R.id.landscape_do_something)

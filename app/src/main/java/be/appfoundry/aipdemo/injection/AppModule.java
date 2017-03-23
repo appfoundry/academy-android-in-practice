@@ -1,8 +1,8 @@
-package be.appfoundry.pxldemo.injection;
+package be.appfoundry.aipdemo.injection;
 
 import javax.inject.Singleton;
 
-import be.appfoundry.pxldemo.model.User;
+import be.appfoundry.aipdemo.model.User;
 import dagger.Module;
 import dagger.Provides;
 

@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo.database;
+package be.appfoundry.aipdemo.database;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;

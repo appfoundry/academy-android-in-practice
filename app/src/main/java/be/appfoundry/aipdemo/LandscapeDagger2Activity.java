@@ -1,4 +1,4 @@
-package be.appfoundry.pxldemo;
+package be.appfoundry.aipdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import javax.inject.Inject;
 
-import be.appfoundry.pxldemo.model.User;
+import be.appfoundry.aipdemo.model.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -36,7 +36,7 @@ public class LandscapeDagger2Activity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        PXLDemoApplication.getAppComponent().inject(this);
+        AIPDemoApplication.getAppComponent().inject(this);
     }
 
     @OnClick(R.id.landscape_do_something)
