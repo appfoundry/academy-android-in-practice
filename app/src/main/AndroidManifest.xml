@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name="be.appfoundry.aipdemo.BuildTypeProductFlavorActivity" android:label="BuildType and ProductFlavor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name="be.appfoundry.aipdemo.LandscapeActivity" android:label="Without ButterKnife">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,6 +29,14 @@
         </activity>
 
         <activity android:name="be.appfoundry.aipdemo.LandscapeButterKnifeActivity" android:label="With ButterKnife">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="be.appfoundry.aipdemo.LandscapeWithoutPicassoActivity" android:label="Without Picasso">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

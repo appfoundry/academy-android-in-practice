@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,6 +24,8 @@ public class LandscapeButterKnifeActivity extends AppCompatActivity {
     @BindView(R.id.landscape_do_something) Button landscapeDoSomething;
     @BindView(R.id.landscape_info) TextView landscapeInfo;
 
+    @BindString(R.string.button_clicked) String buttonClicked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,7 @@ public class LandscapeButterKnifeActivity extends AppCompatActivity {
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        Toast.makeText(getApplicationContext(), "Button clicked!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), buttonClicked, Toast.LENGTH_SHORT).show();
     }
 
 }
