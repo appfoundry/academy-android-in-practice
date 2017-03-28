@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo
+package be.appfoundry.aipdemo.activity.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import be.appfoundry.aipdemo.model.KotlinUser

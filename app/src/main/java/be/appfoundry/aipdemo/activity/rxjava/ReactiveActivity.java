@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.rxjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import be.appfoundry.aipdemo.AIPDemoApplication;
+import be.appfoundry.aipdemo.R;
 import be.appfoundry.aipdemo.database.Post;
 import be.appfoundry.aipdemo.service.PostService;
 import butterknife.BindView;

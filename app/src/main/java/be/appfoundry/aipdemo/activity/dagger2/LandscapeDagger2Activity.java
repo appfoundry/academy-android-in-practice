@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.dagger2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import javax.inject.Inject;
 
+import be.appfoundry.aipdemo.AIPDemoApplication;
+import be.appfoundry.aipdemo.R;
 import be.appfoundry.aipdemo.model.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;

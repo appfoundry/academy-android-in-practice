@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.butterknife;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +10,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import be.appfoundry.aipdemo.database.Post;
-import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenter;
-import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenterRetrofitImpl;
-import be.appfoundry.aipdemo.mvp.LandscapeMVPView;
+import be.appfoundry.aipdemo.R;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LandscapeMVPActivity extends AppCompatActivity implements LandscapeMVPView {
+public class LandscapeButterKnifeActivity extends AppCompatActivity {
 
     @BindView(R.id.landscape_scroll) ScrollView landscapeScrollWrapper;
     @BindView(R.id.landscape_container) LinearLayout landscapeContainer;
@@ -27,7 +25,7 @@ public class LandscapeMVPActivity extends AppCompatActivity implements Landscape
     @BindView(R.id.landscape_do_something) Button landscapeDoSomething;
     @BindView(R.id.landscape_info) TextView landscapeInfo;
 
-    private LandscapeMVPPresenter presenter;
+    @BindString(R.string.button_clicked) String buttonClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +34,11 @@ public class LandscapeMVPActivity extends AppCompatActivity implements Landscape
         setContentView(R.layout.activity_landscape);
 
         ButterKnife.bind(this);
-
-        AIPDemoApplication.getAppComponent().inject(this);
-
-        //presenter = new LandscapeMVPPresenterDBFlowImpl();
-        presenter = new LandscapeMVPPresenterRetrofitImpl();
-        presenter.attachView(this);
     }
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        presenter.loadData();
+        Toast.makeText(getApplicationContext(), buttonClicked, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showPost(Post post) {
-        landscapeTitle.setText(post.getTitle());
-        landscapeInfo.setText(post.getBody());
-    }
-
-    @Override
-    public void showError(String error) {
-        Toast.makeText(LandscapeMVPActivity.this, error, Toast.LENGTH_SHORT).show();
-    }
 }

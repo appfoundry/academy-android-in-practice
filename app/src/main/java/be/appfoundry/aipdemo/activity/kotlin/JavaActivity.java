@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.kotlin;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

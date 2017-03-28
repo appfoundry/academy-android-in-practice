@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="be.appfoundry.aipdemo.BuildTypeProductFlavorActivity" android:label="BuildType and ProductFlavor">
+        <activity android:name="be.appfoundry.aipdemo.activity.buildtypeproductflavor.BuildTypeProductFlavorActivity" android:label="BuildType and ProductFlavor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeActivity" android:label="Without ButterKnife">
+        <activity android:name="be.appfoundry.aipdemo.activity.butterknife.LandscapeActivity" android:label="Without ButterKnife">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeButterKnifeActivity" android:label="With ButterKnife">
+        <activity android:name="be.appfoundry.aipdemo.activity.butterknife.LandscapeButterKnifeActivity" android:label="With ButterKnife">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeWithoutPicassoActivity" android:label="Without Picasso">
+        <activity android:name="be.appfoundry.aipdemo.activity.picasso.LandscapeWithoutPicassoActivity" android:label="Without Picasso">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapePicassoActivity" android:label="Picasso">
+        <activity android:name="be.appfoundry.aipdemo.activity.picasso.LandscapePicassoActivity" android:label="Picasso">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeDagger2Activity" android:label="Dagger2">
+        <activity android:name="be.appfoundry.aipdemo.activity.dagger2.LandscapeDagger2Activity" android:label="Dagger2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -60,7 +60,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeRetrofitActivity" android:label="Retrofit">
+        <activity android:name="be.appfoundry.aipdemo.activity.retrofit.LandscapeRetrofitActivity" android:label="Retrofit">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -68,7 +68,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeDBFlowActivity" android:label="DBFlow">
+        <activity android:name="be.appfoundry.aipdemo.activity.dbflow.LandscapeDBFlowActivity" android:label="DBFlow">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -76,7 +76,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.LandscapeMVPActivity" android:label="MVP">
+        <activity android:name="be.appfoundry.aipdemo.activity.mvp.LandscapeMVPActivity" android:label="MVP">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.ReactiveActivity" android:label="RXJava">
+        <activity android:name="be.appfoundry.aipdemo.activity.rxjava.ReactiveActivity" android:label="RXJava">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

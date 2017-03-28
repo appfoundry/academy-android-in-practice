@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.dbflow;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +18,8 @@ import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransacti
 
 import javax.inject.Inject;
 
+import be.appfoundry.aipdemo.AIPDemoApplication;
+import be.appfoundry.aipdemo.R;
 import be.appfoundry.aipdemo.database.Post;
 import be.appfoundry.aipdemo.database.Post_Table;
 import be.appfoundry.aipdemo.service.PostService;

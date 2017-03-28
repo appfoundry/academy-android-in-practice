@@ -1,8 +1,11 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.buildtypeproductflavor;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import be.appfoundry.aipdemo.BuildConfig;
+import be.appfoundry.aipdemo.R;
 
 public class BuildTypeProductFlavorActivity extends AppCompatActivity {
 

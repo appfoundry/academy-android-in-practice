@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo;
+package be.appfoundry.aipdemo.activity.picasso;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import be.appfoundry.aipdemo.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
