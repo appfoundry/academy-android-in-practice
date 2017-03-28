@@ -54,15 +54,17 @@ public class LandscapeDBFlowActivity extends AppCompatActivity {
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        postService.getPost(2).enqueue(new Callback<Post>() {
+        postService.getPost(8).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
+
+
                 Post servicePost = response.body();
                 FlowManager.getModelAdapter(Post.class).save(servicePost);
 
                 SQLite.select()
                         .from(Post.class)
-                        .where(Post_Table.id.eq(2))
+                        .where(Post_Table.id.eq(8))
                         .async()
                         .queryResultCallback(new QueryTransaction.QueryResultCallback<Post>() {
                             @Override
@@ -72,6 +74,8 @@ public class LandscapeDBFlowActivity extends AppCompatActivity {
                                 landscapeInfo.setText(databasePost.getBody());
                             }
                         }).execute();
+
+
             }
 
             @Override

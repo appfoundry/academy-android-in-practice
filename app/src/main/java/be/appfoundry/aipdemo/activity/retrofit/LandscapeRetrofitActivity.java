@@ -47,7 +47,7 @@ public class LandscapeRetrofitActivity extends AppCompatActivity {
 
     @OnClick(R.id.landscape_do_something)
     void onSaveClicked(View view) {
-        postService.getPost(2).enqueue(new Callback<Post>() {
+        postService.getPost(3).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 Post post = response.body();
