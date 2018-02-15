@@ -28,13 +28,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ReactiveActivity extends AppCompatActivity {
 
-    @Inject
-    SwapiService swapiService;
+    @BindView(R.id.activity_reactive_log) TextView logView;
+    @BindView(R.id.activity_reactive_button) Button button;
 
-    @BindView(R.id.activity_reactive_log)
-    TextView logView;
-    @BindView(R.id.activity_reactive_button)
-    Button button;
+    @Inject SwapiService swapiService;
 
     private String log = "";
 

@@ -7,5 +7,4 @@ public class AppDatabase {
 
     public static final String DATABASE_NAME = "AIPDemoDatabase";
     public static final int VERSION = 1;
-
 }

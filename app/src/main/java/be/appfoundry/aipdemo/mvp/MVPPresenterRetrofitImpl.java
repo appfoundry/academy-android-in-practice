@@ -11,8 +11,7 @@ import retrofit2.Response;
 
 public class MVPPresenterRetrofitImpl implements MVPPresenter {
 
-    @Inject
-    SwapiService swapiService;
+    @Inject SwapiService swapiService;
 
     private MVPView view;
 

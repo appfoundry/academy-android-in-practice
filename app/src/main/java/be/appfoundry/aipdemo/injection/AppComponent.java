@@ -16,17 +16,10 @@ import dagger.Component;
 public interface AppComponent {
 
     void inject(Dagger2Activity activity);
-
     void inject(RetrofitActivity activity);
-
     void inject(DBFlowActivity activity);
-
     void inject(MVPActivity activity);
-
     void inject(ReactiveActivity activity);
-
     void inject(MVPPresenterRetrofitImpl presenter);
-
     void inject(MVPPresenterDBFlowImpl presenter);
-
 }

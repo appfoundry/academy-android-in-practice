@@ -22,18 +22,12 @@ import butterknife.OnClick;
 
 public class MVPActivity extends AppCompatActivity implements MVPView {
 
-    @BindView(R.id.activity_common_scroll)
-    ScrollView scrollWrapper;
-    @BindView(R.id.activity_common_container)
-    LinearLayout container;
-    @BindView(R.id.activity_common_image)
-    ImageView image;
-    @BindView(R.id.activity_common_title)
-    TextView title;
-    @BindView(R.id.activity_common_do_something)
-    Button doSomething;
-    @BindView(R.id.activity_common_info)
-    TextView info;
+    @BindView(R.id.activity_common_scroll) ScrollView scrollWrapper;
+    @BindView(R.id.activity_common_container) LinearLayout container;
+    @BindView(R.id.activity_common_image) ImageView image;
+    @BindView(R.id.activity_common_title) TextView title;
+    @BindView(R.id.activity_common_do_something) Button doSomething;
+    @BindView(R.id.activity_common_info) TextView info;
 
     private MVPPresenter presenter;
 
