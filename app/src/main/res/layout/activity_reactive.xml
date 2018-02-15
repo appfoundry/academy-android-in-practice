@@ -2,10 +2,10 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/landscape_scroll"
+    android:id="@+id/activity_common_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.appfoundry.aipdemo.activity.butterknife.LandscapeActivity">
+    tools:context="be.appfoundry.aipdemo.activity.butterknife.WithoutButterKnifeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,14 +13,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/reactive_button"
+            android:id="@+id/activity_reactive_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Do something"/>
 
         <TextView
-            android:id="@+id/reactive_log"
+            android:id="@+id/activity_reactive_log"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"

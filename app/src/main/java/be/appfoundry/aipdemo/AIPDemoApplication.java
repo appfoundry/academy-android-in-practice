@@ -12,6 +12,10 @@ public class AIPDemoApplication extends Application {
 
     private static AppComponent appComponent;
 
+    public static AppComponent getAppComponent() {
+        return appComponent;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,10 +23,6 @@ public class AIPDemoApplication extends Application {
         FlowManager.init(new FlowConfig.Builder(this).build());
 
         appComponent = DaggerAppComponent.builder().build();
-    }
-
-    public static AppComponent getAppComponent() {
-        return appComponent;
     }
 
 }

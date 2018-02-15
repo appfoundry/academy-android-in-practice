@@ -19,29 +19,36 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LandscapeDagger2Activity extends AppCompatActivity {
+public class Dagger2Activity extends AppCompatActivity {
 
-    @BindView(R.id.landscape_scroll) ScrollView landscapeScrollWrapper;
-    @BindView(R.id.landscape_container) LinearLayout landscapeContainer;
-    @BindView(R.id.landscape_image) ImageView landscapeImage;
-    @BindView(R.id.landscape_title) TextView landscapeTitle;
-    @BindView(R.id.landscape_do_something) Button landscapeDoSomething;
-    @BindView(R.id.landscape_info) TextView landscapeInfo;
+    @BindView(R.id.activity_common_scroll)
+    ScrollView scrollWrapper;
+    @BindView(R.id.activity_common_container)
+    LinearLayout container;
+    @BindView(R.id.activity_common_image)
+    ImageView image;
+    @BindView(R.id.activity_common_title)
+    TextView title;
+    @BindView(R.id.activity_common_do_something)
+    Button doSomething;
+    @BindView(R.id.activity_common_info)
+    TextView info;
 
-    @Inject User user;
+    @Inject
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_landscape);
+        setContentView(R.layout.activity_common);
 
         ButterKnife.bind(this);
 
         AIPDemoApplication.getAppComponent().inject(this);
     }
 
-    @OnClick(R.id.landscape_do_something)
+    @OnClick(R.id.activity_common_do_something)
     void onSaveClicked(View view) {
         Toast.makeText(getApplicationContext(), "The user's name is: " + user.getName(), Toast.LENGTH_SHORT).show();
     }

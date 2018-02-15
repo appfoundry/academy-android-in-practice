@@ -17,7 +17,7 @@ public class BuildTypeProductFlavorActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_build_type_product_flavor);
 
-        urlText = (TextView) findViewById(R.id.text_url);
+        urlText = (TextView) findViewById(R.id.activity_build_type_product_flavor_text_url);
 
         urlText.setText(BuildConfig.URL);
     }

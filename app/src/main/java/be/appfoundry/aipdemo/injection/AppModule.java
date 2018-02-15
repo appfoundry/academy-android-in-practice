@@ -9,7 +9,9 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    @Provides @Singleton static User provideUser() {
+    @Provides
+    @Singleton
+    static User provideUser() {
         User user = new User("Siebe", 27);
         return user;
     }

@@ -2,26 +2,31 @@ package be.appfoundry.aipdemo.injection;
 
 import javax.inject.Singleton;
 
-import be.appfoundry.aipdemo.activity.dbflow.LandscapeDBFlowActivity;
-import be.appfoundry.aipdemo.activity.dagger2.LandscapeDagger2Activity;
-import be.appfoundry.aipdemo.activity.mvp.LandscapeMVPActivity;
-import be.appfoundry.aipdemo.activity.retrofit.LandscapeRetrofitActivity;
+import be.appfoundry.aipdemo.activity.dagger2.Dagger2Activity;
+import be.appfoundry.aipdemo.activity.dbflow.DBFlowActivity;
+import be.appfoundry.aipdemo.activity.mvp.MVPActivity;
+import be.appfoundry.aipdemo.activity.retrofit.RetrofitActivity;
 import be.appfoundry.aipdemo.activity.rxjava.ReactiveActivity;
-import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenterDBFlowImpl;
-import be.appfoundry.aipdemo.mvp.LandscapeMVPPresenterRetrofitImpl;
+import be.appfoundry.aipdemo.mvp.MVPPresenterDBFlowImpl;
+import be.appfoundry.aipdemo.mvp.MVPPresenterRetrofitImpl;
 import dagger.Component;
 
 @Singleton
 @Component(modules = {AppModule.class, ServiceModule.class})
 public interface AppComponent {
 
-    void inject(LandscapeDagger2Activity activity);
-    void inject(LandscapeRetrofitActivity activity);
-    void inject(LandscapeDBFlowActivity activity);
-    void inject(LandscapeMVPActivity activity);
+    void inject(Dagger2Activity activity);
+
+    void inject(RetrofitActivity activity);
+
+    void inject(DBFlowActivity activity);
+
+    void inject(MVPActivity activity);
+
     void inject(ReactiveActivity activity);
 
-    void inject(LandscapeMVPPresenterRetrofitImpl presenter);
-    void inject(LandscapeMVPPresenterDBFlowImpl presenter);
+    void inject(MVPPresenterRetrofitImpl presenter);
+
+    void inject(MVPPresenterDBFlowImpl presenter);
 
 }

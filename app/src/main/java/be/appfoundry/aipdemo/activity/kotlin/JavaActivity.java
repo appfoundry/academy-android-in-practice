@@ -37,8 +37,8 @@ public class JavaActivity extends AppCompatActivity {
 
     private List<User> onlyNamesWithSpaces() {
         List<User> resultList = new ArrayList<>();
-        for(User user: userList) {
-            if(containsSpaces(user)) {
+        for (User user : userList) {
+            if (containsSpaces(user)) {
                 resultList.add(user);
             }
         }
@@ -47,8 +47,8 @@ public class JavaActivity extends AppCompatActivity {
 
     private User findUserWithName(String nameToFind) {
         User result = null;
-        for(User user: userList) {
-            if(user.getName().equals(nameToFind)) {
+        for (User user : userList) {
+            if (user.getName().equals(nameToFind)) {
                 result = user;
                 break;
             }
@@ -60,9 +60,9 @@ public class JavaActivity extends AppCompatActivity {
         return "Hi, I'm " + user.getName() + " and I'm " + user.getAge() + " old.";
     }
 
-    private User findUserOrCreate(String nameToFind) {
+    private User findUserOrUnknown(String nameToFind) {
         User result = findUserWithName(nameToFind);
-        if(result == null) {
+        if (result == null) {
             result = new User(nameToFind);
         }
         return result;

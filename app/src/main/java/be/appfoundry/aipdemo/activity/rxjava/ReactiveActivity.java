@@ -5,31 +5,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
+import com.jakewharton.rxbinding2.view.RxView;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import be.appfoundry.aipdemo.AIPDemoApplication;
 import be.appfoundry.aipdemo.R;
-import be.appfoundry.aipdemo.database.Post;
-import be.appfoundry.aipdemo.service.PostService;
+import be.appfoundry.aipdemo.model.StarWarsFilm;
+import be.appfoundry.aipdemo.model.StarWarsFilms;
+import be.appfoundry.aipdemo.service.SwapiService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class ReactiveActivity extends AppCompatActivity {
 
-    @Inject PostService postService;
+    @Inject
+    SwapiService swapiService;
 
-    @BindView(R.id.reactive_log) TextView logView;
-    @BindView(R.id.reactive_button) Button button;
+    @BindView(R.id.activity_reactive_log)
+    TextView logView;
+    @BindView(R.id.activity_reactive_button)
+    Button button;
 
     private String log = "";
 
@@ -49,158 +54,187 @@ public class ReactiveActivity extends AppCompatActivity {
         //reactiveButton();
         //reactiveDebounceButton();
         //reactiveService();
+        //reactiveServiceOneByOne();
     }
 
     private void simpleRxJava() {
         Observable<String> simpleStringObservable = Observable.just("Eric", "Koen", "Bart", "Lies", "Niki");
 
-        Subscriber<String> simpleStringSubscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                logOnCompleted();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                logOnError(e.getMessage());
-            }
-
+        Observer<String> simpleStringObserver = new DisposableObserver<String>() {
             @Override
             public void onNext(String s) {
                 logOnNext(s);
             }
+
+            @Override
+            public void onError(Throwable e) {
+                logOnError(e);
+            }
+
+            @Override
+            public void onComplete() {
+                logOnCompleted();
+            }
         };
 
-        simpleStringObservable.subscribe(simpleStringSubscriber);
+        simpleStringObservable.subscribe(simpleStringObserver);
     }
 
     private void simpleRxJavaWithOperators() {
         Observable<String> simpleStringObservable = Observable.just("Eric", "Koen", "Bart", "Lies", "Niki");
 
-        Subscriber<String> simpleStringSubscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                logOnCompleted();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                logOnError(e.getMessage());
-            }
-
+        Observer<String> simpleStringObserver = new DisposableObserver<String>() {
             @Override
             public void onNext(String s) {
                 logOnNext(s);
             }
+
+            @Override
+            public void onError(Throwable e) {
+                logOnError(e);
+            }
+
+            @Override
+            public void onComplete() {
+                logOnCompleted();
+            }
         };
 
         simpleStringObservable
-                .filter(new Func1<String, Boolean>() {
+                .filter(new Predicate<String>() {
                     @Override
-                    public Boolean call(String s) {
+                    public boolean test(String s) throws Exception {
                         return s.contains("i");
                     }
                 })
-                .map(new Func1<String, String>() {
+                .map(new Function<String, String>() {
                     @Override
-                    public String call(String s) {
+                    public String apply(String s) throws Exception {
                         return s.toUpperCase();
                     }
                 })
-                .subscribe(simpleStringSubscriber);
+                .subscribe(simpleStringObserver);
     }
 
     private void combinedObservables() {
         Observable<String> simpleMenObservable = Observable.just("Eric", "Koen", "Bart");
         Observable<String> simpleWomenObservable = Observable.just("Lies", "Niki");
 
-        Subscriber<String> simpleStringSubscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                logOnCompleted();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                logOnError(e.getMessage());
-            }
-
+        Observer<String> simpleStringObserver = new DisposableObserver<String>() {
             @Override
             public void onNext(String s) {
                 logOnNext(s);
             }
+
+            @Override
+            public void onError(Throwable e) {
+                logOnError(e);
+            }
+
+            @Override
+            public void onComplete() {
+                logOnCompleted();
+            }
         };
 
-        Observable.concat(simpleMenObservable, simpleWomenObservable).subscribe(simpleStringSubscriber);
+        Observable.concat(simpleMenObservable, simpleWomenObservable).subscribe(simpleStringObserver);
     }
 
     private void reactiveButton() {
         Observable<Object> clickObservable = RxView.clicks(button);
 
-        Subscriber<Object> clickSubscriber = new Subscriber<Object>() {
-            @Override
-            public void onCompleted() {
-                logOnCompleted();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                logOnError(e.getMessage());
-            }
-
+        Observer<Object> clickObserver = new DisposableObserver<Object>() {
             @Override
             public void onNext(Object o) {
                 logOnNext("Click");
             }
+
+            @Override
+            public void onError(Throwable e) {
+                logOnError(e);
+            }
+
+            @Override
+            public void onComplete() {
+                logOnCompleted();
+            }
         };
 
-        clickObservable.subscribe(clickSubscriber);
+        clickObservable.subscribe(clickObserver);
     }
 
     private void reactiveDebounceButton() {
         Observable<Object> clickObservable = RxView.clicks(button);
 
-        Subscriber<Object> clickSubscriber = new Subscriber<Object>() {
+        Observer<Object> clickObserver = new DisposableObserver<Object>() {
             @Override
-            public void onCompleted() {
-                logOnCompleted();
+            public void onNext(Object o) {
+                logOnNext("Click");
             }
 
             @Override
             public void onError(Throwable e) {
-                logOnError(e.getMessage());
+                logOnError(e);
             }
 
             @Override
-            public void onNext(Object o) {
-                logOnNext("Click");
+            public void onComplete() {
+                logOnCompleted();
             }
         };
 
         clickObservable
                 .debounce(1000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(clickSubscriber);
+                .subscribe(clickObserver);
     }
 
     private void reactiveService() {
-        postService.getPosts()
+        swapiService.getFilms()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List<Post>>() {
+                .subscribe(new DisposableObserver<StarWarsFilms>() {
                     @Override
-                    public void onCompleted() {
-                        logOnCompleted();
+                    public void onNext(StarWarsFilms starWarsFilms) {
+                        logOnNext("Found " + starWarsFilms.getResults().size() + " films");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        logOnError(e.getMessage());
+                        logOnError(e);
                     }
 
                     @Override
-                    public void onNext(List<Post> posts) {
-                        logOnNext("Found " + posts.size() + " posts");
+                    public void onComplete() {
+                        logOnCompleted();
+                    }
+                });
+    }
+
+    private void reactiveServiceOneByOne() {
+        swapiService.getFilms()
+                .flatMap(new Function<StarWarsFilms, Observable<StarWarsFilm>>() {
+                    @Override
+                    public Observable<StarWarsFilm> apply(StarWarsFilms starWarsFilms) throws Exception {
+                        return Observable.fromIterable(starWarsFilms.getResults());
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new DisposableObserver<StarWarsFilm>() {
+                    @Override
+                    public void onNext(StarWarsFilm starWarsFilm) {
+                        logOnNext(starWarsFilm.getTitle());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        logOnError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        logOnCompleted();
                     }
                 });
     }
@@ -213,8 +247,8 @@ public class ReactiveActivity extends AppCompatActivity {
         log("onNext: " + message);
     }
 
-    private void logOnError(String error) {
-        log("onError: " + error);
+    private void logOnError(Throwable error) {
+        log("onError: " + error.getMessage());
     }
 
     private void log(String message) {
