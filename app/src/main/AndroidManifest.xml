@@ -5,30 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="be.appfoundry.aipdemo.AIPDemoApplication"
+        android:name="be.appfoundry.aipdemo.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="be.appfoundry.aipdemo.activity.buildtypeproductflavor.BuildTypeProductFlavorActivity" android:label="BuildType and ProductFlavor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name="be.appfoundry.aipdemo.activity.butterknife.WithoutButterKnifeActivity" android:label="Without ButterKnife">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name="be.appfoundry.aipdemo.activity.butterknife.ButterKnifeActivity" android:label="With ButterKnife">
+        <activity android:name="be.appfoundry.aipdemo.activity.dagger.DaggerActivity" android:label="Dagger">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -52,14 +36,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.activity.dagger2.Dagger2Activity" android:label="Dagger2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name="be.appfoundry.aipdemo.activity.retrofit.RetrofitActivity" android:label="Retrofit">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -68,23 +44,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.activity.dbflow.DBFlowActivity" android:label="DBFlow">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name="be.appfoundry.aipdemo.activity.mvp.MVPActivity" android:label="MVP">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name="be.appfoundry.aipdemo.activity.rxjava.ReactiveActivity" android:label="RXJava">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="be.appfoundry.aipdemo.activity.mvvm.MvvmActivity" android:label="MVVM">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
