@@ -13,14 +13,14 @@ class PicassoActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_common)
 
-    activity_common_do_something.setOnClickListener {
+    activityCommonButton.setOnClickListener {
       Picasso.with(this)
           .load("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
           //.rotate(180f)
           //.transform(GrayscaleTransformation())
           //.transform(SketchFilterTransformation(this))
           //.error(R.drawable.error)
-          .into(activity_common_image)
+          .into(activityCommonImage)
     }
   }
 }

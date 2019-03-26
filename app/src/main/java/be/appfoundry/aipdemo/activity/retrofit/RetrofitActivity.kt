@@ -24,13 +24,13 @@ class RetrofitActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_common)
 
-    activity_common_do_something.setOnClickListener {
+    activityCommonButton.setOnClickListener {
       swapiService.getFilm(1).enqueue(object : Callback<StarWarsFilm> {
         override fun onResponse(call: Call<StarWarsFilm>, response: Response<StarWarsFilm>) {
           val starWarsFilm = response.body()
           if (starWarsFilm != null) {
-            activity_common_title.text = starWarsFilm.title
-            activity_common_info.text = starWarsFilm.openingCrawl
+            activityCommonTitle.text = starWarsFilm.title
+            activityCommonInfo.text = starWarsFilm.openingCrawl
           }
         }
 

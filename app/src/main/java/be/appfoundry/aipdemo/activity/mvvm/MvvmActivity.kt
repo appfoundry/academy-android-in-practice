@@ -16,10 +16,10 @@ class MvvmActivity : AppCompatActivity() {
 
     val viewModel = ViewModelProviders.of(this).get(RandomNumberViewModel::class.java)
     viewModel.number.observe(this, Observer { number ->
-      activity_reactive_log.text = "The number is $number"
+      activityLogText.text = "The number is $number"
     })
 
-    activity_reactive_button.setOnClickListener {
+    activityLogButton.setOnClickListener {
       viewModel.generateRandom()
     }
   }

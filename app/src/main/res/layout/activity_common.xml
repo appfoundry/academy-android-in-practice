@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_common_scroll"
+    android:id="@+id/activity_log_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,14 +11,14 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_common_image"
+            android:id="@+id/activityCommonImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/art" />
 
         <TextView
-            android:id="@+id/activity_common_title"
+            android:id="@+id/activityCommonTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -26,14 +26,14 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <Button
-            android:id="@+id/activity_common_do_something"
+            android:id="@+id/activityCommonButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Do Something" />
 
         <TextView
-            android:id="@+id/activity_common_info"
+            android:id="@+id/activityCommonInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

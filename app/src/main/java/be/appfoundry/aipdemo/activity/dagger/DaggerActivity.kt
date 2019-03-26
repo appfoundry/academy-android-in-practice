@@ -20,7 +20,7 @@ class DaggerActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_common)
 
-    activity_common_do_something.setOnClickListener {
+    activityCommonButton.setOnClickListener {
       Toast.makeText(this, "Hi, my name is ${user.name}", Toast.LENGTH_LONG).show()
     }
   }

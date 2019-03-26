@@ -19,12 +19,12 @@ class WithoutPicassoActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_common)
 
-    activity_common_do_something.setOnClickListener {
-      LoadImageTask(activity_common_image).execute("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
+    activityCommonButton.setOnClickListener {
+      LoadImageTask(activityCommonImage).execute("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
     }
   }
 
-  inner class LoadImageTask(val target: ImageView) : AsyncTask<String, Void, Bitmap>() {
+  inner class LoadImageTask(private val target: ImageView) : AsyncTask<String, Void, Bitmap>() {
 
     override fun doInBackground(vararg urls: String?): Bitmap {
       return try {

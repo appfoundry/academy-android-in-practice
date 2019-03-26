@@ -94,7 +94,7 @@ class ReactiveActivity : AppCompatActivity() {
   }
 
   private fun reactiveButton() {
-    RxView.clicks(activity_reactive_button)
+    RxView.clicks(activityLogButton)
         .subscribe(
             { logOnNext("Click") },
             { logOnError(it) },
@@ -104,7 +104,7 @@ class ReactiveActivity : AppCompatActivity() {
   }
 
   private fun reactiveDebounceButton() {
-    RxView.clicks(activity_reactive_button)
+    RxView.clicks(activityLogButton)
         .debounce(1000, TimeUnit.MILLISECONDS)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(
@@ -154,6 +154,6 @@ class ReactiveActivity : AppCompatActivity() {
 
   private fun log(message: String) {
     log += message + "\n"
-    activity_reactive_log.text = log
+    activityLogText.text = log
   }
 }
