@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import be.appfoundry.aipdemo.R
 import kotlinx.android.synthetic.main.activity_reactive.*
 
-class MvvmActivity : AppCompatActivity() {
+class RandomNumberActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

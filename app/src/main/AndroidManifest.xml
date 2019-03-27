@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="be.appfoundry.aipdemo.activity.mvvm.MvvmActivity" android:label="MVVM">
+        <activity android:name="be.appfoundry.aipdemo.activity.mvvm.RandomNumberActivity" android:label="MVVM">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
