@@ -6,9 +6,9 @@ import java.util.*
 
 class RandomNumberViewModel : ViewModel() {
 
-  val number = MutableLiveData<Int>()
+    val number = MutableLiveData<Int>()
 
-  fun generateRandom() {
-    number.value = Random().nextInt()
-  }
+    fun generateRandom() {
+        number.value = Random().nextInt()
+    }
 }

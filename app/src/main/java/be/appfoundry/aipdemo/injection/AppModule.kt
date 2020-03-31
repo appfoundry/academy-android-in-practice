@@ -8,7 +8,7 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-  @Provides
-  @Singleton
-  fun provideUser(): User = User("Siebe")
+    @Provides
+    @Singleton
+    fun provideUser(): User = User("Siebe")
 }

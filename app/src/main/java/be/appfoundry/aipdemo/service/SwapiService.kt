@@ -9,9 +9,9 @@ import retrofit2.http.Path
 
 interface SwapiService {
 
-  @GET("/api/films")
-  fun getFilms(): Observable<StarWarsFilms>
+    @GET("/api/films")
+    fun getFilms(): Observable<StarWarsFilms>
 
-  @GET("/api/films/{id}")
-  fun getFilm(@Path("id") id: Int): Call<StarWarsFilm>
+    @GET("/api/films/{id}")
+    fun getFilm(@Path("id") id: Int): Call<StarWarsFilm>
 }

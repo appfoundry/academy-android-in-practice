@@ -18,142 +18,143 @@ import javax.inject.Inject
 
 class ReactiveActivity : AppCompatActivity() {
 
-  @Inject lateinit var swapiService: SwapiService
+    @Inject
+    lateinit var swapiService: SwapiService
 
-  private val disposables: CompositeDisposable = CompositeDisposable()
+    private val disposables: CompositeDisposable = CompositeDisposable()
 
-  private var log = ""
+    private var log = ""
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    app.appComponent.inject(this)
+        app.appComponent.inject(this)
 
-    setContentView(R.layout.activity_reactive)
+        setContentView(R.layout.activity_reactive)
 
-    simpleRxJava()
-    //simpleRxJavaWithOperators()
-    //combinedObservables()
-    //reactiveButton()
-    //reactiveDebounceButton()
-    //reactiveService()
-    //reactiveServiceOneByOne()
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-
-    disposables.clear()
-  }
-
-  private fun simpleRxJava() {
-    val simpleStringObservable = Observable.just("Eric", "Koen", "Bart", "Lies", "Nikki")
-
-    val simpleStringObserver = object : DisposableObserver<String>() {
-      override fun onNext(s: String) {
-        logOnNext(s)
-      }
-
-      override fun onError(e: Throwable) {
-        logOnError(e)
-      }
-
-      override fun onComplete() {
-        logOnCompleted()
-      }
+        simpleRxJava()
+        //simpleRxJavaWithOperators()
+        //combinedObservables()
+        //reactiveButton()
+        //reactiveDebounceButton()
+        //reactiveService()
+        //reactiveServiceOneByOne()
     }
 
-    simpleStringObservable.subscribe(simpleStringObserver)
+    override fun onDestroy() {
+        super.onDestroy()
 
-    disposables.add(simpleStringObserver)
-  }
+        disposables.clear()
+    }
 
-  private fun simpleRxJavaWithOperators() {
-    Observable.just("Eric", "Koen", "Bart", "Lies", "Nikki")
-        .filter { s -> s.contains("i") }
-        .map { s -> s.toUpperCase() }
-        .subscribe(
-            { s -> logOnNext(s) },
-            { e -> logOnError(e) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+    private fun simpleRxJava() {
+        val simpleStringObservable = Observable.just("Eric", "Koen", "Bart", "Lies", "Nikki")
 
-  private fun combinedObservables() {
-    val simpleMenObservable = Observable.just("Eric", "Koen", "Bart")
-    val simpleWomenObservable = Observable.just("Lies", "Nikki")
+        val simpleStringObserver = object : DisposableObserver<String>() {
+            override fun onNext(s: String) {
+                logOnNext(s)
+            }
 
-    Observable.concat(simpleMenObservable, simpleWomenObservable)
-        .subscribe(
-            { logOnNext(it) },
-            { logOnError(it) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+            override fun onError(e: Throwable) {
+                logOnError(e)
+            }
 
-  private fun reactiveButton() {
-    RxView.clicks(activityLogButton)
-        .subscribe(
-            { logOnNext("Click") },
-            { logOnError(it) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+            override fun onComplete() {
+                logOnCompleted()
+            }
+        }
 
-  private fun reactiveDebounceButton() {
-    RxView.clicks(activityLogButton)
-        .debounce(1000, TimeUnit.MILLISECONDS)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(
-            { logOnNext("Click") },
-            { logOnError(it) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+        simpleStringObservable.subscribe(simpleStringObserver)
 
-  private fun reactiveService() {
-    swapiService.getFilms()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe(
-            { logOnNext("Found " + it.results.size + " films") },
-            { logOnError(it) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+        disposables.add(simpleStringObserver)
+    }
 
-  private fun reactiveServiceOneByOne() {
-    swapiService.getFilms()
-        .flatMap { starWarsFilms -> Observable.fromIterable(starWarsFilms.results) }
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe(
-            { logOnNext(it.title) },
-            { logOnError(it) },
-            { logOnCompleted() }
-        )
-        .addTo(disposables)
-  }
+    private fun simpleRxJavaWithOperators() {
+        Observable.just("Eric", "Koen", "Bart", "Lies", "Nikki")
+                .filter { s -> s.contains("i") }
+                .map { s -> s.toUpperCase() }
+                .subscribe(
+                        { s -> logOnNext(s) },
+                        { e -> logOnError(e) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
 
-  private fun logOnCompleted() {
-    log("onCompleted")
-  }
+    private fun combinedObservables() {
+        val simpleMenObservable = Observable.just("Eric", "Koen", "Bart")
+        val simpleWomenObservable = Observable.just("Lies", "Nikki")
 
-  private fun logOnNext(message: String) {
-    log("onNext: $message")
-  }
+        Observable.concat(simpleMenObservable, simpleWomenObservable)
+                .subscribe(
+                        { logOnNext(it) },
+                        { logOnError(it) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
 
-  private fun logOnError(error: Throwable) {
-    log("onError: ${error.message}")
-  }
+    private fun reactiveButton() {
+        RxView.clicks(activityLogButton)
+                .subscribe(
+                        { logOnNext("Click") },
+                        { logOnError(it) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
 
-  private fun log(message: String) {
-    log += message + "\n"
-    activityLogText.text = log
-  }
+    private fun reactiveDebounceButton() {
+        RxView.clicks(activityLogButton)
+                .debounce(1000, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { logOnNext("Click") },
+                        { logOnError(it) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
+
+    private fun reactiveService() {
+        swapiService.getFilms()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        { logOnNext("Found " + it.results.size + " films") },
+                        { logOnError(it) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
+
+    private fun reactiveServiceOneByOne() {
+        swapiService.getFilms()
+                .flatMap { starWarsFilms -> Observable.fromIterable(starWarsFilms.results) }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        { logOnNext(it.title) },
+                        { logOnError(it) },
+                        { logOnCompleted() }
+                )
+                .addTo(disposables)
+    }
+
+    private fun logOnCompleted() {
+        log("onCompleted")
+    }
+
+    private fun logOnNext(message: String) {
+        log("onNext: $message")
+    }
+
+    private fun logOnError(error: Throwable) {
+        log("onError: ${error.message}")
+    }
+
+    private fun log(message: String) {
+        log += message + "\n"
+        activityLogText.text = log
+    }
 }

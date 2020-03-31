@@ -11,16 +11,16 @@ import javax.inject.Singleton
 @Module
 class ServiceModule {
 
-  @Provides
-  @Singleton
-  fun provideRetrofit(): Retrofit = Retrofit.Builder()
-      .baseUrl("https://swapi.co")
-      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-      .addConverterFactory(JacksonConverterFactory.create())
-      .build()
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit = Retrofit.Builder()
+            .baseUrl("https://swapi.co")
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(JacksonConverterFactory.create())
+            .build()
 
 
-  @Provides
-  @Singleton
-  fun provideSwapiService(retrofit: Retrofit): SwapiService = retrofit.create(SwapiService::class.java)
+    @Provides
+    @Singleton
+    fun provideSwapiService(retrofit: Retrofit): SwapiService = retrofit.create(SwapiService::class.java)
 }

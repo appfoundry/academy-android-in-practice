@@ -8,13 +8,13 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = arrayOf(
-        AppModule::class,
-        ServiceModule::class
-    )
+        modules = arrayOf(
+                AppModule::class,
+                ServiceModule::class
+        )
 )
 interface AppComponent {
-  fun inject(target: DaggerActivity)
-  fun inject(target: RetrofitActivity)
-  fun inject(target: ReactiveActivity)
+    fun inject(target: DaggerActivity)
+    fun inject(target: RetrofitActivity)
+    fun inject(target: ReactiveActivity)
 }

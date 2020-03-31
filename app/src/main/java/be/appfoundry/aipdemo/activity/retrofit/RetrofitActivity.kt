@@ -15,29 +15,30 @@ import javax.inject.Inject
 
 class RetrofitActivity : AppCompatActivity() {
 
-  @Inject lateinit var swapiService: SwapiService
+    @Inject
+    lateinit var swapiService: SwapiService
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    app.appComponent.inject(this)
+        app.appComponent.inject(this)
 
-    setContentView(R.layout.activity_common)
+        setContentView(R.layout.activity_common)
 
-    activityCommonButton.setOnClickListener {
-      swapiService.getFilm(7).enqueue(object : Callback<StarWarsFilm> {
-        override fun onResponse(call: Call<StarWarsFilm>, response: Response<StarWarsFilm>) {
-          val starWarsFilm = response.body()
-          if (starWarsFilm != null) {
-            activityCommonTitle.text = starWarsFilm.title
-            activityCommonInfo.text = starWarsFilm.openingCrawl
-          }
+        activityCommonButton.setOnClickListener {
+            swapiService.getFilm(7).enqueue(object : Callback<StarWarsFilm> {
+                override fun onResponse(call: Call<StarWarsFilm>, response: Response<StarWarsFilm>) {
+                    val starWarsFilm = response.body()
+                    if (starWarsFilm != null) {
+                        activityCommonTitle.text = starWarsFilm.title
+                        activityCommonInfo.text = starWarsFilm.openingCrawl
+                    }
+                }
+
+                override fun onFailure(call: Call<StarWarsFilm>, t: Throwable) {
+                    Toast.makeText(this@RetrofitActivity, "Failed to get a film.", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
-
-        override fun onFailure(call: Call<StarWarsFilm>, t: Throwable) {
-          Toast.makeText(this@RetrofitActivity, "Failed to get a film.", Toast.LENGTH_SHORT).show()
-        }
-      })
     }
-  }
 }

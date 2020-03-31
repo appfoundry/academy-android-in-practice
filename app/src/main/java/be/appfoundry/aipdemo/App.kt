@@ -6,7 +6,7 @@ import be.appfoundry.aipdemo.injection.DaggerAppComponent
 
 class App : Application() {
 
-  val appComponent: AppComponent by lazy {
-    DaggerAppComponent.builder().build()
-  }
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.builder().build()
+    }
 }

@@ -10,19 +10,19 @@ import kotlinx.android.synthetic.main.activity_common.*
 
 class PicassoActivity : AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    setContentView(R.layout.activity_common)
+        setContentView(R.layout.activity_common)
 
-    activityCommonButton.setOnClickListener {
-      Picasso.with(this)
-          .load("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art3.jpg")
-          .rotate(180f)
-          .transform(GrayscaleTransformation())
-          .transform(SketchFilterTransformation(this))
-          .error(R.drawable.error)
-          .into(activityCommonImage)
+        activityCommonButton.setOnClickListener {
+            Picasso.get()
+                    .load("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
+                    .rotate(180f)
+                    .transform(GrayscaleTransformation())
+                    .transform(SketchFilterTransformation(this))
+                    .error(R.drawable.error)
+                    .into(activityCommonImage)
+        }
     }
-  }
 }

@@ -10,17 +10,18 @@ import javax.inject.Inject
 
 class DaggerActivity : AppCompatActivity() {
 
-  @Inject lateinit var userLogger: UserLogger
+    @Inject
+    lateinit var userLogger: UserLogger
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    app.appComponent.inject(this)
+        app.appComponent.inject(this)
 
-    setContentView(R.layout.activity_common)
+        setContentView(R.layout.activity_common)
 
-    activityCommonButton.setOnClickListener {
-      activityCommonTitle.text = userLogger.log()
+        activityCommonButton.setOnClickListener {
+            activityCommonTitle.text = userLogger.log()
+        }
     }
-  }
 }

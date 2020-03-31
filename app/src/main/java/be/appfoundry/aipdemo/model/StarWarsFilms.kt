@@ -6,5 +6,5 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class StarWarsFilms(
 
-    @JsonProperty("results") val results: List<StarWarsFilm>
+        @JsonProperty("results") val results: List<StarWarsFilm>
 )

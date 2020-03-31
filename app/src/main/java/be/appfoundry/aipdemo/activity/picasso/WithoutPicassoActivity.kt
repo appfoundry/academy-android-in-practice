@@ -14,29 +14,29 @@ import java.net.URL
 
 class WithoutPicassoActivity : AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    setContentView(R.layout.activity_common)
+        setContentView(R.layout.activity_common)
 
-    activityCommonButton.setOnClickListener {
-      LoadImageTask(activityCommonImage).execute("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
-    }
-  }
-
-  inner class LoadImageTask(private val target: ImageView) : AsyncTask<String, Void, Bitmap>() {
-
-    override fun doInBackground(vararg urls: String?): Bitmap {
-      return try {
-        val inputStream: InputStream = URL(urls[0]).openStream()
-        BitmapFactory.decodeStream(inputStream)
-      } catch (e: IOException) {
-        BitmapFactory.decodeResource(resources, R.drawable.error)
-      }
+        activityCommonButton.setOnClickListener {
+            LoadImageTask(activityCommonImage).execute("https://github.com/appfoundry/academy-android-in-practice/raw/master/app/src/main/res/drawable/art2.jpg")
+        }
     }
 
-    override fun onPostExecute(result: Bitmap?) {
-      target.setImageBitmap(result)
+    inner class LoadImageTask(private val target: ImageView) : AsyncTask<String, Void, Bitmap>() {
+
+        override fun doInBackground(vararg urls: String?): Bitmap {
+            return try {
+                val inputStream: InputStream = URL(urls[0]).openStream()
+                BitmapFactory.decodeStream(inputStream)
+            } catch (e: IOException) {
+                BitmapFactory.decodeResource(resources, R.drawable.error)
+            }
+        }
+
+        override fun onPostExecute(result: Bitmap?) {
+            target.setImageBitmap(result)
+        }
     }
-  }
 }
