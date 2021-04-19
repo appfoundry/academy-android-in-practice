@@ -17,8 +17,8 @@ class CardListViewModel @Inject constructor(
     private val cardRepository: CardRepository
 ) : ViewModel() {
 
-    private val _cards: MutableLiveData<Data<List<Card>>> = MutableLiveData()
-    val cards: LiveData<Data<List<Card>>> = _cards
+    private val _cards: MutableLiveData<List<Card>> = MutableLiveData()
+    val cards: LiveData<List<Card>> = _cards
 
     fun loadCards() {
         viewModelScope.launch {

@@ -1,43 +1,36 @@
 package be.appfoundry.aipdemo.presentation
 
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import be.appfoundry.aipdemo.databinding.ActivityCardListBinding
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import be.appfoundry.aipdemo.data.model.Card
+import com.google.accompanist.coil.CoilImage
 import dagger.hilt.android.AndroidEntryPoint
 
+
+
 @AndroidEntryPoint
-class CardListActivity : AppCompatActivity() {
+class CardListActivity : ComponentActivity() {
 
     private val viewModel: CardListViewModel by viewModels()
-
-    private lateinit var binding: ActivityCardListBinding
-
-    private val cardAdapter = CardAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCardListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.cardList.apply {
-            adapter = cardAdapter
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        }
-
-        viewModel.cards.observe(this) { cards ->
-            cardAdapter.cards = cards.data
-            Toast.makeText(
-                this@CardListActivity,
-                "Data from: ${cards.source}",
-                Toast.LENGTH_SHORT
-            ).show()
+        setContent {
+            MaterialTheme {
+                CardListScreen(viewModel)
+            }
         }
     }
 
