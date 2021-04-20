@@ -9,13 +9,15 @@ import be.appfoundry.aipdemo.databinding.ItemCardBinding
 import coil.load
 import kotlin.properties.Delegates
 
-class CardAdapter : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(private val cardClickListener: (card: Card) -> Unit) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     var cards: List<Card> by Delegates.observable(emptyList()) { _, _, _ -> notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val binding = ItemCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CardViewHolder(binding)
+        return CardViewHolder(binding).whenClicked { position ->
+            cardClickListener.invoke(cards[position])
+        }
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {

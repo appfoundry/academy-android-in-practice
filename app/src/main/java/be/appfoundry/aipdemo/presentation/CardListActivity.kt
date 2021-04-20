@@ -17,13 +17,15 @@ class CardListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCardListBinding
 
-    private val cardAdapter = CardAdapter()
+    private lateinit var cardAdapter: CardAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCardListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        cardAdapter = CardAdapter(viewModel::cardClicked)
 
         binding.cardList.apply {
             adapter = cardAdapter
