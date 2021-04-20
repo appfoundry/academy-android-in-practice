@@ -1,5 +1,6 @@
 package be.appfoundry.aipdemo.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,5 +30,9 @@ class CardListViewModel @Inject constructor(
                 TODO("Add some better error handling!")
             }
         }
+    }
+
+    fun cardClicked(card: Card) {
+        Log.d("CardListViewModel", "Card clicked: ${card.name}")
     }
 }

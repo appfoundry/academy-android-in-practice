@@ -1,6 +1,7 @@
 package be.appfoundry.aipdemo.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
@@ -30,29 +31,38 @@ fun CardListScreen(viewModel: CardListViewModel) {
             )
         }
     ) {
-        CardList(cards = cards)
+        CardList(cards = cards, viewModel::cardClicked)
     }
 }
 
 @Composable
-fun CardList(cards: List<Card>) {
+fun CardList(cards: List<Card>, onCardClicked: (card: Card) -> Unit) {
     LazyColumn {
         cards.forEach { card ->
             item {
-                CardItem(card.name, card.type, card.getSecureImageUrl())
+                CardItem(
+                    modifier = Modifier.clickable(onClick = { onCardClicked(card) }),
+                    card.name, card.type,
+                    card.getSecureImageUrl()
+                )
             }
         }
     }
 }
 
 @Composable
-fun CardItem(name: String, type: String, imageUrl: String?) {
+fun CardItem(modifier: Modifier, name: String, type: String, imageUrl: String?) {
     Row(
-        modifier = Modifier.padding(8.dp),
+        modifier = modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if(imageUrl != null) {
+        if (imageUrl != null) {
             CoilImage(
+                modifier = Modifier
+                    .width(64.dp)
+                    .height(64.dp),
                 data = imageUrl,
                 loading = {
                     Image(
@@ -60,10 +70,15 @@ fun CardItem(name: String, type: String, imageUrl: String?) {
                         contentDescription = "Loading image"
                     )
                 },
-                contentDescription = "Card image",
+                contentDescription = "Card image"
+            )
+        } else {
+            Image(
                 modifier = Modifier
                     .width(64.dp)
-                    .height(64.dp)
+                    .height(64.dp),
+                painter = painterResource(R.drawable.card_error),
+                contentDescription = "Error image"
             )
         }
         Column {
