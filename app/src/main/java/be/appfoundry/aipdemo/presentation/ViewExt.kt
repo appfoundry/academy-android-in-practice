@@ -4,7 +4,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 fun <T : RecyclerView.ViewHolder> T.whenClicked(clickListener: (position: Int) -> Unit): T {
     itemView.setOnClickListener {
-        clickListener.invoke(absoluteAdapterPosition)
+        if (absoluteAdapterPosition != RecyclerView.NO_POSITION)
+            clickListener.invoke(absoluteAdapterPosition)
     }
     return this
 }

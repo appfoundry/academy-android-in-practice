@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo.presentation
+package be.appfoundry.aipdemo.presentation.cardlist
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -20,6 +20,10 @@ class CardListViewModel @Inject constructor(
 
     private val _cards: MutableLiveData<Data<List<Card>>> = MutableLiveData()
     val cards: LiveData<Data<List<Card>>> = _cards
+
+    init {
+        loadCards()
+    }
 
     fun loadCards() {
         viewModelScope.launch {

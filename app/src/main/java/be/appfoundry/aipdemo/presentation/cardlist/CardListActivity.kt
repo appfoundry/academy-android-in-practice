@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo.presentation
+package be.appfoundry.aipdemo.presentation.cardlist
 
 import android.os.Bundle
 import android.widget.Toast
@@ -41,11 +41,5 @@ class CardListActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.loadCards()
     }
 }

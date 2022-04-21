@@ -8,6 +8,7 @@ private const val DATABASE_VERSION = 1
 
 @Database(entities = [Card::class], version = DATABASE_VERSION)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun cardDao(): CardDao
 
     companion object {

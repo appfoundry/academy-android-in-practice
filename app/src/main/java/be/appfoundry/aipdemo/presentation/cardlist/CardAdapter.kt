@@ -1,4 +1,4 @@
-package be.appfoundry.aipdemo.presentation
+package be.appfoundry.aipdemo.presentation.cardlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import be.appfoundry.aipdemo.R
 import be.appfoundry.aipdemo.data.model.Card
 import be.appfoundry.aipdemo.databinding.ItemCardBinding
+import be.appfoundry.aipdemo.presentation.whenClicked
 import coil.load
 import kotlin.properties.Delegates
 
