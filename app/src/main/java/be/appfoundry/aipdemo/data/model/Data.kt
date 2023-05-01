@@ -6,6 +6,6 @@ class Data<T>(
 ) {
 
     enum class Source {
-        UNKNOWN, NETWORK, DATABASE
+        NETWORK, DATABASE
     }
 }

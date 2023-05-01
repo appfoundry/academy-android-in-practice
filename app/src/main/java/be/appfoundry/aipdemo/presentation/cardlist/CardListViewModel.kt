@@ -1,16 +1,15 @@
 package be.appfoundry.aipdemo.presentation.cardlist
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import be.appfoundry.aipdemo.data.model.Card
-import be.appfoundry.aipdemo.data.model.Data
 import be.appfoundry.aipdemo.data.repository.CardRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,8 +17,8 @@ class CardListViewModel @Inject constructor(
     private val cardRepository: CardRepository
 ) : ViewModel() {
 
-    private val _cards: MutableLiveData<Data<List<Card>>> = MutableLiveData()
-    val cards: LiveData<Data<List<Card>>> = _cards
+    private val _uiState = MutableStateFlow(CardListState())
+    val uiState: StateFlow<CardListState> = _uiState
 
     init {
         loadCards()
@@ -27,16 +26,10 @@ class CardListViewModel @Inject constructor(
 
     fun loadCards() {
         viewModelScope.launch {
-            try {
-                val cardsData = cardRepository.getCards()
-                _cards.postValue(cardsData)
-            } catch (e: Exception) {
-                TODO("Add some better error handling!")
-            }
+            cardRepository.getCards()
+                .onStart { _uiState.update { it.loading() } }
+                .catch { _uiState.update { it.error() } }
+                .collect { data -> _uiState.update { it.data(data.data, data.source) } }
         }
-    }
-
-    fun cardClicked(card: Card) {
-        Log.d("CardListViewModel", "Card clicked: ${card.name}")
     }
 }

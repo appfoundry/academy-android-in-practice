@@ -3,7 +3,10 @@ package be.appfoundry.aipdemo.core.injection
 import android.content.Context
 import androidx.room.Room
 import be.appfoundry.aipdemo.data.database.AppDatabase
+import be.appfoundry.aipdemo.data.datasource.CardDataSource
+import be.appfoundry.aipdemo.data.datasource.RemoteCardDataSource
 import be.appfoundry.aipdemo.data.network.CardService
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,4 +46,13 @@ internal object DataModule {
     @Singleton
     fun provideCardDao(appDatabase: AppDatabase) =
         appDatabase.cardDao()
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class DataModuleBinds {
+
+    @Binds
+    @Singleton
+    abstract fun bindCardDataSource(cardDataSource: RemoteCardDataSource): CardDataSource
 }

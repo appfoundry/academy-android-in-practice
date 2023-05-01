@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">AIP Demo</string>
+    <string name="error_loading_cards">Could not load cards.</string>
+    <string name="info_cards_source">Cards loaded from %1$s</string>
 </resources>
